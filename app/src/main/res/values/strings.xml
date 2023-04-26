@@ -4,4 +4,5 @@
     <string name="hint_senha">Senha</string>
     <string name="button_entrar">ENTRAR</string>
     <string name="button_criar_conta">CRIAR CONTA</string>
+    <string name="hint_buscar_nome">Buscar por nome</string>
 </resources>

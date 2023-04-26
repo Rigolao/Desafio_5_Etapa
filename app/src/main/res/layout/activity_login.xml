@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="16dp"
     android:background="?attr/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Desafio"
-        app:layout_constraintBottom_toTopOf="@id/emailInputId"
+        app:layout_constraintBottom_toTopOf="@id/emailLayoutId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="132dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputId"
+        android:id="@+id/emailLayoutId"
         style="?attr/textInputOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,21 +30,23 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInputId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/senhaInputId"
+        android:id="@+id/senhaLayoutId"
         style="?attr/textInputOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_senha"
         app:endIconMode="password_toggle"
-        app:layout_constraintTop_toBottomOf="@id/emailInputId"
+        app:layout_constraintTop_toBottomOf="@id/emailLayoutId"
         android:layout_marginTop="4dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/senhaInputId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
@@ -57,7 +59,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/senhaInputId"
+        app:layout_constraintTop_toBottomOf="@id/senhaLayoutId"
         android:layout_marginVertical="48dp"
         android:text="@string/button_entrar"
         android:textSize="16dp"

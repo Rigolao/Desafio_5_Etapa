@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.rigolao.desafio5etapa.R
+import br.rigolao.desafio5etapa.data.Estagio
 
 class EstagiosAdapter(
     private val estagiosList: List<Estagio>,
@@ -13,17 +14,14 @@ class EstagiosAdapter(
 ) : RecyclerView.Adapter<EstagiosAdapter.EstagioViewHolder>() {
 
     inner class EstagioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun setInfo(titulo: String, dataFim: String, descricao: String) {
-            val tituloView: TextView = itemView.findViewById(R.id.titulo)
-            val dataFimView: TextView = itemView.findViewById(R.id.dataFimValue)
-            val descricaoView: TextView = itemView.findViewById(R.id.descricaoValue)
+        val tituloView: TextView = itemView.findViewById(R.id.titulo)
+        val dataFimView: TextView = itemView.findViewById(R.id.dataFimValue)
+        val descricaoView: TextView = itemView.findViewById(R.id.descricaoValue)
 
-            tituloView.text = titulo
-            tituloView.setOnClickListener{
-                onItemClickListener(Estagio(titulo, dataFim, descricao))
-            }
-            dataFimView.text = dataFim
-            descricaoView.text = descricao
+        fun setInfo(estagio: Estagio) {
+            tituloView.text = estagio.titulo
+            dataFimView.text = estagio.dataFim
+            descricaoView.text = estagio.descricao
         }
     }
 
@@ -37,7 +35,7 @@ class EstagiosAdapter(
     }
 
     override fun onBindViewHolder(holder: EstagioViewHolder, position: Int) {
-        holder.setInfo(estagiosList[position].titulo, estagiosList[position].dataFim, estagiosList[position].descricao)
+        holder.setInfo(estagiosList[position])
     }
 
 }
