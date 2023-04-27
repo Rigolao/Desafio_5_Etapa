@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSecondary"
+        app:menu="@menu/menu_estagio" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Vaga X"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titulo"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Área: "  />
+
+    <TextView
+        android:id="@+id/areaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titulo"
+        android:layout_alignRight="@id/area"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/localidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/area"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Localidade: "  />
+
+    <TextView
+        android:id="@+id/localidadeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/areaValue"
+        android:layout_alignRight="@id/localidade"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/remuneracao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/localidade"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Remuneração: "  />
+
+    <TextView
+        android:id="@+id/remuneracaoValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/localidadeValue"
+        android:layout_alignRight="@id/remuneracao"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/emailContato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/remuneracao"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="E-mail para contato: "  />
+
+    <TextView
+        android:id="@+id/emailContatoValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/remuneracaoValue"
+        android:layout_alignRight="@id/emailContato"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/telefoneContato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailContato"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Telefone para contato: "  />
+
+    <TextView
+        android:id="@+id/telefoneContatoValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailContatoValue"
+        android:layout_alignRight="@id/telefoneContato"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/anunciante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telefoneContato"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Anunciante: "  />
+
+    <TextView
+        android:id="@+id/anuncianteValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telefoneContatoValue"
+        android:layout_alignRight="@id/anunciante"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/dataInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/anunciante"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Data de Ínicio: "  />
+
+    <TextView
+        android:id="@+id/dataInicioValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/anuncianteValue"
+        android:layout_alignRight="@id/dataInicio"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/dataFim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dataInicio"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Data de Fim: "  />
+
+    <TextView
+        android:id="@+id/dataFimValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dataInicioValue"
+        android:layout_alignRight="@id/dataFim"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/descricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dataFim"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:text="Descrição: "  />
+
+    <TextView
+        android:id="@+id/descricaoValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dataFimValue"
+        android:layout_alignRight="@id/descricao"
+        android:paddingBottom="12dp" />
+
+</RelativeLayout>

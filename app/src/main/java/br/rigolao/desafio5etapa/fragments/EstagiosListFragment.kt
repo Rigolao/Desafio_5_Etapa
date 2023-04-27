@@ -76,7 +76,7 @@ class EstagiosListFragment : Fragment() {
                     "14/01/2023",
                     "14/02/2023",
                     "Vaga")
-            ), ::printEstagio
+            ), ::openEstagio
         )
 
         val toolbar: MaterialToolbar = view.findViewById(R.id.menu)
@@ -84,7 +84,7 @@ class EstagiosListFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.perfil -> {
-                    (activity as? OnFragmentInteractionListener)?.onFragmentInteraction(ProfileFragment())
+                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(ProfileFragment())
                     true
                 }
                 R.id.adicionar -> {
@@ -100,11 +100,11 @@ class EstagiosListFragment : Fragment() {
         }
     }
 
-    private fun printEstagio(estagio: Estagio) {
-        Toast.makeText(
-            context,
-            "Item clicado foi ${estagio.titulo}",
-            Toast.LENGTH_SHORT
-        ).show()
+    private fun openEstagio(estagio: Estagio) {
+        val bundle: Bundle = Bundle()
+        bundle.putParcelable("estagio", estagio)
+        val fragment = EstagioFragment()
+        fragment.arguments = bundle
+        (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithBackStack(fragment)
     }
 }
