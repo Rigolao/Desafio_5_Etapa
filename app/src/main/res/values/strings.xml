@@ -9,4 +9,6 @@
     <string name="button_cancelar">CANCELAR</string>
     <string name="button_criar_conta">CRIAR CONTA</string>
     <string name="hint_buscar_nome">Buscar por nome</string>
+    <string name="hint_confirmar_senha">Confirmar Senha*</string>
+    <string name="hint_telefone">Telefone</string>
 </resources>
