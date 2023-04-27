@@ -1,13 +1,11 @@
-package br.rigolao.desafio5etapa
+package br.rigolao.desafio5etapa.activitys
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
+import br.rigolao.desafio5etapa.R
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

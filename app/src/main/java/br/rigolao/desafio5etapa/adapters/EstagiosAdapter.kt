@@ -1,4 +1,4 @@
-package br.rigolao.desafio5etapa.estagios
+package br.rigolao.desafio5etapa.adapters
 
 import android.view.LayoutInflater
 import android.view.View

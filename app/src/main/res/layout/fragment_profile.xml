@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="?attr/backgroundColor">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/menu"
@@ -12,9 +13,93 @@
         android:background="?attr/colorSecondary"
         app:menu="@menu/menu_profile" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Perfil"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meu Perfil"
+            android:textSize="32dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nomeLayoutId"
+            android:enabled="false"
+            style="?attr/textInputOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_nome"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nomeInputId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayoutId"
+            android:enabled="false"
+            style="?attr/textInputOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_email"
+            android:layout_marginTop="4dp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailInputId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/senhaLayoutId"
+            android:enabled="false"
+            style="?attr/textInputOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_senha"
+            app:endIconMode="password_toggle"
+            android:layout_marginTop="4dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/senhaInputId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:id="@+id/editarButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/senhaLayoutId"
+            android:layout_marginTop="48dp"
+            android:text="@string/button_editar"
+            android:textSize="16dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:textColor="?attr/colorOnPrimary"
+            />
+
+        <Button
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/cancelarButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/entrarButtonId"
+            android:text="@string/button_cancelar"
+            android:textSize="16dp"
+            android:textColor="?attr/colorSecondary"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
 
 </LinearLayout>

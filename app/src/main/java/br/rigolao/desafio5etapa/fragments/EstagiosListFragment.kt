@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.rigolao.desafio5etapa.R
 import br.rigolao.desafio5etapa.data.Estagio
-import br.rigolao.desafio5etapa.estagios.EstagiosAdapter
+import br.rigolao.desafio5etapa.adapters.EstagiosAdapter
 import br.rigolao.desafio5etapa.interfaces.OnFragmentInteractionListener
 import com.google.android.material.appbar.MaterialToolbar
 

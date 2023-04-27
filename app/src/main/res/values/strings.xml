@@ -2,7 +2,11 @@
     <string name="app_name">Desafio5Etapa</string>
     <string name="hint_email">E-mail</string>
     <string name="hint_senha">Senha</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_tipo">Tipo</string>
     <string name="button_entrar">ENTRAR</string>
+    <string name="button_editar">EDITAR</string>
+    <string name="button_cancelar">CANCELAR</string>
     <string name="button_criar_conta">CRIAR CONTA</string>
     <string name="hint_buscar_nome">Buscar por nome</string>
 </resources>
