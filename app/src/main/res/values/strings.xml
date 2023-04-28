@@ -11,4 +11,11 @@
     <string name="hint_buscar_nome">Buscar por nome</string>
     <string name="hint_confirmar_senha">Confirmar Senha*</string>
     <string name="hint_telefone">Telefone</string>
+    <string name="hint_adicionar">Adicionar</string>
+    <string name="hint_titulo_vaga">Título</string>
+    <string name="hint_desricao">Descrição</string>
+    <string name="hint_data_inicio">Data Início</string>
+    <string name="hint_data_fim">Data Fim</string>
+    <string name="hint_area">Área</string>
+    <string name="hint_localidade">Localidade</string>
 </resources>

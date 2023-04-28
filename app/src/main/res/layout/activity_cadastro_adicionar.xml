@@ -13,58 +13,92 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Criar Conta"
+        android:text="Cadastrar Vaga"
         android:textSize="48sp"
         android:layout_marginHorizontal="10dp"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nome"
+        android:id="@+id/titulo"
         android:layout_width="match_parent"
         style="?attr/textInputOutlinedStyle"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_nome"
+        android:hint="@string/hint_titulo_vaga"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintTop_toBottomOf="@id/textView2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email"
+        android:id="@+id/descricao"
         android:layout_width="match_parent"
         style="?attr/textInputOutlinedStyle"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_email"
+        android:hint="@string/hint_desricao"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/nome">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/senha"
-        android:layout_width="match_parent"
-        style="?attr/textInputOutlinedStyle"
-        android:layout_height="wrap_content"
-        app:endIconMode="password_toggle"
-        android:hint="@string/hint_senha"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/email">
+        app:layout_constraintTop_toBottomOf="@id/titulo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textMultiLine"
+            android:maxLength="250"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?attr/textInputOutlinedStyle"
+        android:hint="@string/hint_area"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/descricao">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/localidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?attr/textInputOutlinedStyle"
+        android:hint="@string/hint_localidade"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/area">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dataInicio"
+        android:layout_width="match_parent"
+        style="?attr/textInputOutlinedStyle"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_data_inicio"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/localidade">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,16 +107,14 @@
         android:layout_width="match_parent"
         style="?attr/textInputOutlinedStyle"
         android:layout_height="wrap_content"
-        app:endIconMode="password_toggle"
-        android:hint="@string/hint_confirmar_senha"
+        android:hint="@string/hint_data_fim"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/senha">
+        app:layout_constraintTop_toBottomOf="@id/dataInicio">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,49 +134,22 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/tipo_usuario"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="4dp"
+        style="?attr/textInputOutlinedStyle"
+        android:hint="@string/hint_localidade"
         android:layout_marginHorizontal="10dp"
-        app:layout_constraintTop_toBottomOf="@id/telefone"
-        >
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/telefone">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo de usuário"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="4dp"
-            />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintTop_toBottomOf="@id/telefone"
-            >
-            <Button
-                style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Anunciante"
-                />
-            <Button
-                style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Candidato"
-                />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         style="@style/Widget.Material3.Button.ElevatedButton"
@@ -153,7 +158,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tipo_usuario"
+        app:layout_constraintTop_toBottomOf="@id/email"
         android:layout_marginVertical="48dp"
         android:text="@string/button_criar_conta"
         android:textSize="16dp"
@@ -173,7 +178,5 @@
         android:textSize="16dp"
         android:textColor="?attr/colorSecondary"
         />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
