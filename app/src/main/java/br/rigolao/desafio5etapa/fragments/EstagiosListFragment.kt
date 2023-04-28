@@ -38,7 +38,7 @@ class EstagiosListFragment : Fragment() {
                     "TI",
                     null,
                     "teste@teste.com",
-                    "99999-9999",
+                    "999999999",
                 "Matheus",
                 "14/01/2023",
                 "14/02/2023",
