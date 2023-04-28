@@ -32,11 +32,11 @@ class CadastroActivity : AppCompatActivity() {
             startActivity(navegarParaLoginActivity)
         }
 
-        val nome: TextInputEditText = findViewById(R.id.nome)
-        val email: TextInputEditText = findViewById(R.id.email)
-        val senha: TextInputEditText = findViewById(R.id.senha)
-        val confirmarSenha: TextInputEditText = findViewById(R.id.confirmar_senha)
-        val telefone: TextInputEditText = findViewById(R.id.telefone)
+        val nome: TextInputEditText = findViewById(R.id.nomeValue)
+        val email: TextInputEditText = findViewById(R.id.emailValue)
+        val senha: TextInputEditText = findViewById(R.id.senhaValue)
+        val confirmarSenha: TextInputEditText = findViewById(R.id.confirmar_senhaValue)
+        val telefone: TextInputEditText = findViewById(R.id.telefoneValue)
 
 
         /*

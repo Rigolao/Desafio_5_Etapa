@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nomeValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -45,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/nome">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -62,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@id/email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/senhaValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
@@ -80,6 +83,7 @@
         app:layout_constraintTop_toBottomOf="@id/senha">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmar_senhaValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
@@ -97,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@id/confirmar_senha">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/telefoneValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -168,7 +173,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/entrarButtonId"
+        app:layout_constraintTop_toBottomOf="@id/criarButtonId"
         android:text="@string/button_cancelar"
         android:textSize="16dp"
         android:textColor="?attr/colorSecondary"
