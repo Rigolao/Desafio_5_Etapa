@@ -48,7 +48,7 @@ class ProfileFragment: Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.list -> {
-                    (activity as? OnFragmentInteractionListener)?.onFragmentInteraction(EstagiosListFragment())
+                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(EstagiosListFragment())
                     true
                 }
                 R.id.adicionar -> {
@@ -64,6 +64,10 @@ class ProfileFragment: Fragment() {
         }
 
         return root
+    }
+
+    companion object {
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

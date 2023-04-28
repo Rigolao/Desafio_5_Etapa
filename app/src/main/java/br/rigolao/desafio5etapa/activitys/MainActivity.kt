@@ -22,12 +22,22 @@ class MainActivity: AppCompatActivity(), OnFragmentInteractionListener {
         fragmentTransaction.commit()
     }
 
-    override fun onFragmentInteraction(fragment: Fragment) {
+    override fun onFragmentInteractionWithBackStack(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
 
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main, fragment)
-//            .addToBackStack(null)
+            .addToBackStack(null)
         fragmentTransaction.commit()
     }
+
+    override fun onFragmentInteractionWithoutBackStack(fragment: Fragment) {
+        val fragmentManager: FragmentManager = supportFragmentManager
+
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.main, fragment)
+        fragmentTransaction.commit()
+    }
+
+
 }
