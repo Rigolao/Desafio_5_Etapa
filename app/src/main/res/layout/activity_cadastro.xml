@@ -7,7 +7,7 @@
     android:paddingHorizontal="16dp"
     android:paddingVertical="40dp"
     android:background="?attr/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".activitys.CadastroActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -148,7 +148,7 @@
 
     <Button
         style="@style/Widget.Material3.Button.ElevatedButton"
-        android:id="@+id/entrarButtonId"
+        android:id="@+id/criarButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +163,7 @@
 
     <Button
         style="@style/Widget.Material3.Button.TextButton"
-        android:id="@+id/cadatrarButtonId"
+        android:id="@+id/cancelarButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

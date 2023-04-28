@@ -13,13 +13,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val btnNavega: Button = findViewById(R.id.entrarButtonId)
+        val btnCadastrar: Button = findViewById(R.id.cadatrarButtonId)
+
+
         val emailTextField : TextInputEditText = findViewById(R.id.emailInputId)
         val senhaTextField : TextInputEditText = findViewById(R.id.senhaInputId)
 
         btnNavega.setOnClickListener {
 
-            val navegaParaOutraTela = Intent(this, MainActivity::class.java)
-            startActivity(navegaParaOutraTela)
+            val navegarParaMainActivity = Intent(this, MainActivity::class.java)
+            startActivity(navegarParaMainActivity)
 
 //            if(emailTextField.text.toString() == "teste" && senhaTextField.text.toString() == "teste") {
 //                val navegaParaOutraTela = Intent(this, ListActivity::class.java)
@@ -31,6 +34,12 @@ class LoginActivity : AppCompatActivity() {
 //                    Toast.LENGTH_SHORT
 //                ).show()
 //            }
+        }
+
+        btnCadastrar.setOnClickListener {
+
+            val navegarParaCadastroActivity = Intent(this, CadastroActivity::class.java)
+            startActivity(navegarParaCadastroActivity)
         }
     }
 }
