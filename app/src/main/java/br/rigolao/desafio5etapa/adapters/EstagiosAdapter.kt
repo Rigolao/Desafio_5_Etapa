@@ -18,6 +18,12 @@ class EstagiosAdapter(
         val dataFimView: TextView = itemView.findViewById(R.id.dataFimValue)
         val descricaoView: TextView = itemView.findViewById(R.id.descricaoValue)
 
+        init {
+            itemView.setOnClickListener {
+                onItemClickListener(estagiosList[adapterPosition])
+            }
+        }
+
         fun setInfo(estagio: Estagio) {
             tituloView.text = estagio.titulo
             dataFimView.text = estagio.dataFim
