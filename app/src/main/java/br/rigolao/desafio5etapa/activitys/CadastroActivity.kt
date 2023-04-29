@@ -14,9 +14,6 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        /*
-            Variaiveis que representam os bottoes da tela
-         */
         val btnCriarConta : Button = findViewById(R.id.criarButtonId)
         val btnCancelar : Button = findViewById(R.id.cancelarButtonId)
 
@@ -38,10 +35,6 @@ class CadastroActivity : AppCompatActivity() {
         val confirmarSenha: TextInputEditText = findViewById(R.id.confirmar_senhaValue)
         val telefone: TextInputEditText = findViewById(R.id.telefoneValue)
 
-
-        /*
-            Função que valída se o email cadastrado é o email da unaerp.
-         */
         fun isEmailValid(email: String): Boolean {
             val emailPattern = "^[a-zA-Z0-9._%+-]+@sou\\.unaerp\\.edu\\.br$"
             val regex = Regex(emailPattern)
