@@ -23,6 +23,7 @@
         <activity android:name=".activitys.ListActivity" android:exported="false" />
         <activity android:name=".activitys.MainActivity" android:exported="false" />
         <activity android:name=".activitys.CadastroActivity" android:exported="false" />
+        <activity android:name=".activitys.CadastroVagaAcitivity" android:exported="false" />
 
     </application>
 

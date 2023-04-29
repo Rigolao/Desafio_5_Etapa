@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_list"
+        app:menu="@menu/menu_minhas_vagas"
         android:background="?attr/colorSecondary"
         />
 
@@ -55,7 +55,7 @@
         tools:listitem="@layout/card_estagio" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/actionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

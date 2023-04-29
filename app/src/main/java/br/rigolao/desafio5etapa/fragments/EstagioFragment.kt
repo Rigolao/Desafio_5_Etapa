@@ -52,7 +52,7 @@ class EstagioFragment: Fragment() {
         tituloTextView.text = estagio.titulo
         localidadeTextView.text = estagio.localidade
         areaTextView.text = estagio.area
-        remuneracaoTextView.text = estagio.remuneracao.toString()
+        remuneracaoTextView.text = if(estagio.remuneracao == null) "Não informado" else estagio.remuneracao.toString()
         emailContatoTextView.text = estagio.emailContato
         anuncianteTextView.text = estagio.anunciante
         dataInicioTextView.text = estagio.dataInicio

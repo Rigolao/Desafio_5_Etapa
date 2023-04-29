@@ -8,6 +8,9 @@
     <string name="button_editar">EDITAR</string>
     <string name="button_cancelar">CANCELAR</string>
     <string name="button_criar_conta">CRIAR CONTA</string>
+    <string name="button_criar_vaga">CRIAR VAGA</string>
+    <string name="button_editar_vaga">EDITAR VAGA</string>
+    <string name="button_deletar_vaga">DELETAR VAGA</string>
     <string name="hint_buscar_nome">Buscar por nome</string>
     <string name="hint_confirmar_senha">Confirmar Senha*</string>
     <string name="hint_telefone">Telefone</string>

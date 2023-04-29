@@ -50,7 +50,7 @@ class EstagiosListFragment : Fragment() {
                     null,
                     "teste@teste.com",
                     "99999-9999",
-                    "Matheus",
+                    "João",
                     "14/01/2023",
                     "14/02/2023",
                     "Vaga"),
@@ -61,7 +61,7 @@ class EstagiosListFragment : Fragment() {
                     null,
                     "teste@teste.com",
                     "99999-9999",
-                    "Matheus",
+                    "Diego",
                     "14/01/2023",
                     "14/02/2023",
                     "Vaga"),
@@ -72,7 +72,7 @@ class EstagiosListFragment : Fragment() {
                     null,
                     "teste@teste.com",
                     "99999-9999",
-                    "Matheus",
+                    "Rafael",
                     "14/01/2023",
                     "14/02/2023",
                     "Vaga")
@@ -87,12 +87,8 @@ class EstagiosListFragment : Fragment() {
                     (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(ProfileFragment())
                     true
                 }
-                R.id.adicionar -> {
-                    Toast.makeText(
-                        context,
-                        "Adicionar",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                R.id.minhasVagas -> {
+                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(MeusCardsFragments())
                     true
                 }
                 else -> false

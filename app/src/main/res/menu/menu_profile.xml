@@ -9,9 +9,9 @@
     </item>
 
     <item
-        android:id="@+id/adicionar"
-        android:icon="@drawable/adicionar"
-        android:title="Adicionar"
+        android:id="@+id/minhasVagas"
+        android:icon="@drawable/checklist"
+        android:title="Minhas Vagas"
         app:showAsAction="always">
     </item>
 

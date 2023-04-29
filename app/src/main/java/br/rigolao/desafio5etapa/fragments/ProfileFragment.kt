@@ -51,12 +51,9 @@ class ProfileFragment: Fragment() {
                     (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(EstagiosListFragment())
                     true
                 }
-                R.id.adicionar -> {
-                    Toast.makeText(
-                        context,
-                        "Adicionar",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                R.id.minhasVagas -> {
+                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(MeusCardsFragments())
+                    true
                     true
                 }
                 else -> false
