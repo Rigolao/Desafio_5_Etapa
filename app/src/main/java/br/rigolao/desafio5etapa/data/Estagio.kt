@@ -5,6 +5,7 @@ import android.os.Parcelable
 
 data class Estagio (
     val id: Double,
+    val idAnunciante: Int,
     val titulo: String,
     val localidade: String,
     val area: String,
@@ -14,11 +15,14 @@ data class Estagio (
     val anunciante: String,
     val dataInicio: String,
     val dataFim: String,
-    val descricao: String
+    val descricao: String,
+    val exibir: String,
+    val status: Int
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readDouble(),
+        parcel.readInt(),
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -28,11 +32,14 @@ data class Estagio (
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readInt()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeDouble(id)
+        parcel.writeInt(idAnunciante)
         parcel.writeString(titulo)
         parcel.writeString(localidade)
         parcel.writeString(area)
@@ -43,6 +50,8 @@ data class Estagio (
         parcel.writeString(dataInicio)
         parcel.writeString(dataFim)
         parcel.writeString(descricao)
+        parcel.writeString(exibir)
+        parcel.writeInt(status)
     }
 
     override fun describeContents(): Int {

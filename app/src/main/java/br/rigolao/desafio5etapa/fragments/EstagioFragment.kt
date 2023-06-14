@@ -30,7 +30,7 @@ class EstagioFragment: Fragment() {
         val root = inflater.inflate(R.layout.fragment_estagio, container, false)
 
         estagio = arguments?.getParcelable<Estagio>("estagio")
-            ?: Estagio(0.0, "", "", "", null, "", "", "", "", "", "")
+            ?: Estagio(0.0, 0, "", "", "", null, "", "", "", "", "", "", "", 0)
 
         val toolbar = root.findViewById<MaterialToolbar>(R.id.menu)
         toolbar.setNavigationIcon(R.drawable.voltar)
@@ -52,7 +52,7 @@ class EstagioFragment: Fragment() {
         tituloTextView.text = estagio.titulo
         localidadeTextView.text = estagio.localidade
         areaTextView.text = estagio.area
-        remuneracaoTextView.text = if(estagio.remuneracao == null) "Não informado" else estagio.remuneracao.toString()
+        remuneracaoTextView.text = if(estagio.remuneracao == null || estagio.remuneracao == 0.0) "Não informado" else estagio.remuneracao.toString()
         emailContatoTextView.text = estagio.emailContato
         anuncianteTextView.text = estagio.anunciante
         dataInicioTextView.text = estagio.dataInicio

@@ -11,13 +11,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import br.rigolao.desafio5etapa.R
 import br.rigolao.desafio5etapa.activitys.CadastroVagaAcitivity
-import br.rigolao.desafio5etapa.activitys.LoginActivity
-import br.rigolao.desafio5etapa.activitys.MainActivity
 import br.rigolao.desafio5etapa.data.Estagio
 
 class EstagiosAdapter(
     private val estagiosList: List<Estagio>,
-    private val onItemClickListener: (Estagio) -> Unit
+    private val onItemClickListener: (Estagio) -> Unit,
+    private val onDeleteListener: (Int) -> Unit
 ) : RecyclerView.Adapter<EstagiosAdapter.EstagioViewHolder>() {
 
     inner class EstagioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,11 +33,12 @@ class EstagiosAdapter(
         }
 
         fun setInfo(estagio: Estagio) {
-            tituloView.text = estagio.titulo
+            println(estagio)
+            tituloView.text = estagio.descricao
             dataFimView.text = estagio.dataFim
             descricaoView.text = estagio.descricao
 
-            if(estagio.anunciante == "Matheus") {
+            if(estagio.idAnunciante == 1) {
                 editarButton.isVisible = true
                 removerButton.isVisible = true
 
@@ -50,6 +50,7 @@ class EstagiosAdapter(
 
                 removerButton.setOnClickListener {
                     Toast.makeText(itemView.context, "Vaga Removida", Toast.LENGTH_SHORT).show()
+                    onDeleteListener(estagiosList[adapterPosition].id.toInt());
                 }
             }
         }
