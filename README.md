@@ -1,5 +1,5 @@
-Dsafio 5 Etapa
+### Desafio 5 Etapa 
 
-Integrante:
-João Marques de Oliveira - 836815
-Matheus Rigolão Sequís de Souza - 836033
+<div> Integrantes: </div>
+<div> João Marques de Oliveira - 836815 </div>
+<div> Matheus Rigolão Sequís de Souza - 836033 </div>
