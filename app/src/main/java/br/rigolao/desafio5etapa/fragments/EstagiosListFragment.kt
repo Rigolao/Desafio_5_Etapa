@@ -1,5 +1,7 @@
 package br.rigolao.desafio5etapa.fragments
 
+import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -44,25 +46,56 @@ class EstagiosListFragment : Fragment() {
 
         atualizarRecyclerView(rvEstagios)
 
+        val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        val tipo = sharedPreferences.getInt("TIPO", 0)
+        val id = sharedPreferences.getInt("ID", 0)
+
         rvEstagios?.adapter = EstagiosAdapter(
-            transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
+            id, tipo, transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
         )
 
-        val toolbar: MaterialToolbar = view.findViewById(R.id.menu)
+        val toolbarAnunciante: MaterialToolbar = view.findViewById(R.id.menuAnunciante)
+        val toolbarInteressado: MaterialToolbar = view.findViewById(R.id.menuInteressado)
 
-        toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.perfil -> {
-                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(ProfileFragment())
-                    true
+
+
+        println("Tipo de usuario: " + tipo)
+
+        if(tipo == 0) {
+            toolbarInteressado.visibility = View.VISIBLE
+            toolbarAnunciante.visibility = View.GONE
+            toolbarInteressado.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.perfil -> {
+                        (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(ProfileFragment())
+                        true
+                    }
+
+                    else -> false
                 }
-                R.id.minhasVagas -> {
-                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(MeusCardsFragments())
-                    true
+            }
+        } else {
+            toolbarAnunciante.visibility = View.VISIBLE
+            toolbarInteressado.visibility = View.GONE
+            toolbarAnunciante.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.perfil -> {
+                        (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(ProfileFragment())
+                        true
+                    }
+
+                    R.id.minhasVagas -> {
+                        (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(MeusCardsFragments())
+                        true
+                    }
+                    else -> false
                 }
-                else -> false
             }
         }
+
+        println(toolbarAnunciante.visibility)
+        println(toolbarInteressado.visibility)
+
     }
 
     inner class EstagiosListCallBack: Callback<List<EstagioListResponse>> {
@@ -132,9 +165,13 @@ class EstagiosListFragment : Fragment() {
     private fun atualizarRecyclerView(rvEstagios: RecyclerView?) {
         rvEstagios?.layoutManager = LinearLayoutManager(context)
 
+        val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        val tipo = sharedPreferences.getInt("TIPO", 0)
+        val id = sharedPreferences.getInt("ID", 0)
+
         if (listaEstagiosResponse != null) {
             rvEstagios?.adapter = EstagiosAdapter(
-                transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
+                id, tipo, transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
             )
         }
     }
@@ -143,12 +180,16 @@ class EstagiosListFragment : Fragment() {
         val rvEstagios: RecyclerView? = getView()?.findViewById(R.id.listEstagios)
         rvEstagios?.layoutManager = LinearLayoutManager(context)
 
+        val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        val tipo = sharedPreferences.getInt("TIPO", 0)
+        val id = sharedPreferences.getInt("ID", 0)
+
         if (listaEstagiosResponse != null) {
 
             println(listaEstagiosResponse)
 
             rvEstagios?.adapter = EstagiosAdapter(
-                transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
+                id, tipo, transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
             )
         }
     }

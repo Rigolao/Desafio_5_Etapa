@@ -1,5 +1,6 @@
 package br.rigolao.desafio5etapa.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,8 @@ import br.rigolao.desafio5etapa.activitys.CadastroVagaAcitivity
 import br.rigolao.desafio5etapa.data.Estagio
 
 class EstagiosAdapter(
+    private val idUsuario: Int,
+    private val tipoUsuario: Int,
     private val estagiosList: List<Estagio>,
     private val onItemClickListener: (Estagio) -> Unit,
     private val onDeleteListener: (Int) -> Unit
@@ -38,7 +41,7 @@ class EstagiosAdapter(
             dataFimView.text = estagio.dataFim
             descricaoView.text = estagio.descricao
 
-            if(estagio.idAnunciante == 1) {
+            if(estagio.idAnunciante == idUsuario && tipoUsuario == 1) {
                 editarButton.isVisible = true
                 removerButton.isVisible = true
 

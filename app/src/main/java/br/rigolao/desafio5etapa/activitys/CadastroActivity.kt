@@ -10,8 +10,8 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.rigolao.desafio5etapa.R
-import br.rigolao.desafio5etapa.responses.UserResponse
-import br.rigolao.desafio5etapa.services.UsersService
+import br.rigolao.desafio5etapa.responses.UsuarioCadastroResponse
+import br.rigolao.desafio5etapa.services.UsuariosService
 import br.rigolao.desafio5etapa.services.config.ServiceCreator
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.textfield.TextInputEditText
@@ -30,7 +30,7 @@ class CadastroActivity : AppCompatActivity() {
         val btnCriarConta : Button = findViewById(R.id.criarButtonId)
         val btnCancelar : Button = findViewById(R.id.cancelarButtonId)
 
-//        val userService = ServiceCreator.createService<UsersService>();
+        val usuarioService = ServiceCreator.createService<UsuariosService>();
 
         val nome: TextInputEditText = findViewById(R.id.nomeValue)
         val email: TextInputEditText = findViewById(R.id.emailValue)
@@ -56,9 +56,9 @@ class CadastroActivity : AppCompatActivity() {
             val tipoButton: MaterialButtonToggleGroup = findViewById(R.id.toggleButton)
             val opcaoSelecionada =  tipoButton.checkedButtonId
             val tipoUsuario = when (opcaoSelecionada) {
-                R.id.candidato -> "Interessado"
-                R.id.anunciante -> "Anunciante"
-                else -> ""
+                R.id.candidato -> false
+                R.id.anunciante -> true
+                else -> null
             }
 
             if(isEmailValid(email.text.toString())) {
@@ -71,29 +71,33 @@ class CadastroActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-//            userService.cadastrar(
-//                nome.text.toString(),
-//                email.text.toString(),
-//                senha.text.toString(),
-//                tipoUsuario
-//            ).enqueue(UsersCallBack())
+            usuarioService.cadastrar(
+                UsuarioCadastroResponse(
+                    nome.text.toString(),
+                    email.text.toString(),
+                    senha.text.toString(),
+                    tipoUsuario!!)
+            ).enqueue(UsersCallBack())
 
-            val navegarParaLoginActivity = Intent(this@CadastroActivity, LoginActivity::class.java)
-            startActivity(navegarParaLoginActivity)
+
         }
     }
 
-    inner class UsersCallBack: Callback<UserResponse> {
-        override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-            Toast.makeText(this@CadastroActivity, "Usuário Cadastrado!", Toast.LENGTH_SHORT).show()
+    inner class UsersCallBack: Callback<Unit> {
+        override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+            println(response)
             if(response.isSuccessful) {
+                Toast.makeText(this@CadastroActivity, "Usuário Cadastrado!", Toast.LENGTH_SHORT).show()
                 val navegarParaLoginActivity = Intent(this@CadastroActivity, LoginActivity::class.java)
                 startActivity(navegarParaLoginActivity)
+            } else {
+                Toast.makeText(this@CadastroActivity, "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
         }
 
-        override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-            Toast.makeText(this@CadastroActivity, "Deu Ruim!", Toast.LENGTH_SHORT).show()
+        override fun onFailure(call: Call<Unit>, t: Throwable) {
+            Toast.makeText(this@CadastroActivity, "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
             Log.e("Retrofit erro", t.message ?: "Sem mensagem")
         }
     }

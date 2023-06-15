@@ -1,5 +1,6 @@
 package br.rigolao.desafio5etapa.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -139,9 +140,13 @@ class MeusCardsFragments : Fragment(){
     private fun atualizarRecyclerView(rvEstagios: RecyclerView?) {
         rvEstagios?.layoutManager = LinearLayoutManager(context)
 
+        val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        val tipo = sharedPreferences.getInt("TIPO", 0)
+        val id = sharedPreferences.getInt("ID", 0)
+
         if (listaEstagiosResponse != null) {
             rvEstagios?.adapter = EstagiosAdapter(
-                transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
+                id, tipo, transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
             )
         }
     }
@@ -150,9 +155,13 @@ class MeusCardsFragments : Fragment(){
         val rvEstagios: RecyclerView? = getView()?.findViewById(R.id.listEstagios)
         rvEstagios?.layoutManager = LinearLayoutManager(context)
 
+        val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        val tipo = sharedPreferences.getInt("TIPO", 0)
+        val id = sharedPreferences.getInt("ID", 0)
+
         if (listaEstagiosResponse != null) {
             rvEstagios?.adapter = EstagiosAdapter(
-                transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
+                id, tipo, transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio
             )
         }
     }

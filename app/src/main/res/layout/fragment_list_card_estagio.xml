@@ -7,14 +7,33 @@
     android:background="?attr/backgroundColor"
     tools:context=".fragments.EstagiosListFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <LinearLayout
         android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_list"
-        android:background="?attr/colorSecondary"
-        />
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/menuInteressado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_list"
+            android:visibility="gone"
+            android:background="?attr/colorSecondary"
+            />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/menuAnunciante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_list"
+            android:visibility="gone"
+            android:background="?attr/colorSecondary"
+            />
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/buscarLayoutId"
