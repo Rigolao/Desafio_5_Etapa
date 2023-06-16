@@ -36,7 +36,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Desafio"
+        android:text="@string/nome_app"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@id/emailLayoutId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,6 +101,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/entrarButtonId"
         android:text="@string/button_criar_conta"
+        android:textSize="16dp"
+        android:textColor="?attr/colorSecondary"
+        />
+
+    <Button
+        style="@style/Widget.Material3.Button.TextButton"
+        android:id="@+id/recuperarButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cadatrarButtonId"
+        android:text="@string/button_recuperar_senha"
         android:textSize="16dp"
         android:textColor="?attr/colorSecondary"
         />

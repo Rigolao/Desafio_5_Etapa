@@ -1,5 +1,6 @@
 package br.rigolao.desafio5etapa.activitys
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -13,6 +14,7 @@ import br.rigolao.desafio5etapa.responses.EstagioEdicaoresponse
 import br.rigolao.desafio5etapa.responses.EstagioListResponse
 import br.rigolao.desafio5etapa.services.EstagiosService
 import br.rigolao.desafio5etapa.services.config.ServiceCreator
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,8 +41,17 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
         val telefoneValue: TextInputEditText = findViewById(R.id.telefoneValue)
         val emailValue: TextInputEditText = findViewById(R.id.emailValue)
         val remuneracaoValue: TextInputEditText = findViewById(R.id.remuneracaoValue)
+        val exibirButton: MaterialButtonToggleGroup = findViewById(R.id.toggleButton)
+
 
         val estagioService = ServiceCreator.createService<EstagiosService>();
+
+        val opcaoSelecionada =  exibirButton.checkedButtonId
+        val exibir = when (opcaoSelecionada) {
+            R.id.sim -> "S"
+            R.id.nao -> "N"
+            else -> null
+        }
 
         if (estagio != null) {
             criarButton.text = "Editar Vaga"
@@ -65,7 +76,22 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
             println("Clicando!!!")
 
             if (estagio?.id != null) {
-                println("Editando!!!")
+
+                if(
+                    areaValue.text.toString().isEmpty() ||
+                    emailValue.text.toString().isEmpty() ||
+                    descricaoValue.text.toString().isEmpty() ||
+                    exibir == null ||
+                    remuneracaoValue.text.toString().isEmpty() ||
+                    telefoneValue.text.toString().isEmpty() ||
+                    dataInicioValue.text.toString().isEmpty() ||
+                    localidadeValue.text.toString().isEmpty()
+                ) {
+                    Toast.makeText(this@CadastroVagaAcitivity, "Existem dados em branco!", Toast.LENGTH_SHORT)
+                        .show()
+                    return@setOnClickListener;
+                }
+
                 val estagioResponse = EstagioEdicaoresponse(
                     areaConhecimento = areaValue.text.toString(),
                     email = emailValue.text.toString(),
@@ -82,13 +108,30 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
 
                 estagioService.edit(estagio.id.toInt(), estagioResponse).enqueue(EstagioEditCallBack())
             } else {
-                println("Criando!!!")
+
+                if(
+                    areaValue.text.toString().isEmpty() ||
+                    emailValue.text.toString().isEmpty() ||
+                    descricaoValue.text.toString().isEmpty() ||
+                    exibir == null ||
+                    remuneracaoValue.text.toString().isEmpty() ||
+                    telefoneValue.text.toString().isEmpty() ||
+                    dataInicioValue.text.toString().isEmpty() ||
+                    localidadeValue.text.toString().isEmpty()
+                ) {
+                    Toast.makeText(this@CadastroVagaAcitivity, "Existem dados em branco!", Toast.LENGTH_SHORT)
+                        .show()
+                    return@setOnClickListener;
+                }
+
+                val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+
                 val novoEstagio = EstagioCadastroResponse(
-                    idUsuario = 1,
+                    idUsuario = sharedPreferences.getInt("ID", 0),
                     areaConhecimento = areaValue.text.toString(),
                     email = emailValue.text.toString(),
                     descricao = descricaoValue.text.toString(),
-                    exibir = "S",
+                    exibir = exibir!!,
                     remuneracao = remuneracaoValue.text.toString().toDouble(),
                     telefone = telefoneValue.text.toString(),
                     dataInicio = dataInicioValue.text.toString(),
@@ -104,7 +147,6 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
     inner class EstagioCreateCallBack : Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
             if (response.isSuccessful) {
-                println("Deu certo")
                 Toast.makeText(this@CadastroVagaAcitivity, "Vaga criada!", Toast.LENGTH_SHORT)
                     .show()
                 this@CadastroVagaAcitivity.onBackPressed()

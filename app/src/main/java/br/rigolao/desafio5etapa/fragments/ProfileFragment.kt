@@ -1,6 +1,7 @@
 package br.rigolao.desafio5etapa.fragments
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import br.rigolao.desafio5etapa.R
+import br.rigolao.desafio5etapa.activitys.LoginActivity
 import br.rigolao.desafio5etapa.activitys.MainActivity
 import br.rigolao.desafio5etapa.data.Usuario
 import br.rigolao.desafio5etapa.interfaces.OnFragmentInteractionListener
@@ -33,6 +37,7 @@ class ProfileFragment: Fragment() {
     private lateinit var senhaTextField: TextInputEditText
     private lateinit var editarButton: Button
     private lateinit var cancelarButton: Button
+    private lateinit var deletarButton: Button
     private lateinit var usuario: Usuario
 
     override fun onCreateView(
@@ -57,6 +62,7 @@ class ProfileFragment: Fragment() {
 
         editarButton = root.findViewById(R.id.editarButtonId)
         cancelarButton = root.findViewById(R.id.cancelarButtonId)
+        deletarButton = root.findViewById(R.id.deletarButtonId)
 
         emailTextField.setText(usuario.email)
         nomeTextField.setText(usuario.nome)
@@ -71,8 +77,11 @@ class ProfileFragment: Fragment() {
                     true
                 }
                 R.id.minhasVagas -> {
-                    (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(MeusCardsFragments())
-                    true
+                    if(usuario.tipo == 0) {
+                        Toast.makeText(requireContext(), "Essa função é somente para anunciantes", Toast.LENGTH_SHORT).show()
+                    } else {
+                        (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(MeusCardsFragments())
+                    }
                     true
                 }
                 else -> false
@@ -103,6 +112,13 @@ class ProfileFragment: Fragment() {
 
                 val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
 
+                if(emailTextField.text.toString().isEmpty()
+                    || nomeTextField.text.toString().isEmpty()
+                    || senhaTextField.text.toString().isEmpty()) {
+                    Toast.makeText(requireContext(), "Existem dados em branco!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 usuarioService.editar(
                     sharedPreferences.getInt("ID", 0),
                     UsuarioEdicaoResponse(
@@ -123,6 +139,29 @@ class ProfileFragment: Fragment() {
             emailTextField.setText(usuario.email)
             nomeTextField.setText(usuario.nome)
             senhaTextField.setText(usuario.senha)
+        }
+
+        deletarButton.setOnClickListener {
+
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+
+            alertDialogBuilder.setTitle("Deletar conta")
+            alertDialogBuilder.setMessage("Essa ação irá delatar sua conta, é irreversivel, tem certeza?")
+
+            alertDialogBuilder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
+                usuarioService.deletar(usuario.id).enqueue(DeletarCallBack())
+
+                dialog.dismiss()
+            })
+
+            alertDialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, which ->
+                dialog.dismiss()
+            })
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
+            Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -152,6 +191,25 @@ class ProfileFragment: Fragment() {
 
             } else {
                 println(response)
+                Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
+            }
+        }
+
+        override fun onFailure(call: Call<Unit>, t: Throwable) {
+            Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+            Log.e("Retrofit erro", t.message ?: "Sem mensagem")
+        }
+    }
+
+    inner class DeletarCallBack: Callback<Unit> {
+        override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+            if(response.isSuccessful) {
+                Toast.makeText(requireContext(), "Conta deletada", Toast.LENGTH_SHORT).show()
+
+                val navegarParaLoginActivity = Intent(requireContext(), LoginActivity::class.java)
+                startActivity(navegarParaLoginActivity)
+            } else {
                 Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
                 Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Desafio5Etapa</string>
+    <string name="nome_app">UnaEstagios</string>
     <string name="hint_email">E-mail</string>
     <string name="hint_remuneracao">Remuneração</string>
     <string name="hint_senha">Senha</string>
@@ -8,7 +9,9 @@
     <string name="button_entrar">ENTRAR</string>
     <string name="button_editar">EDITAR</string>
     <string name="button_cancelar">CANCELAR</string>
+    <string name="button_deletar">DELETAR CONTA</string>
     <string name="button_criar_conta">CRIAR CONTA</string>
+    <string name="button_recuperar_senha">RECUPERAR SENHA</string>
     <string name="button_criar_vaga">CRIAR VAGA</string>
     <string name="button_editar_vaga">EDITAR VAGA</string>
     <string name="button_deletar_vaga">DELETAR VAGA</string>

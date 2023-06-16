@@ -9,201 +9,247 @@
     android:background="?attr/backgroundColor"
     tools:context=".activitys.CadastroVagaAcitivity">
 
-    <TextView
-        android:id="@+id/titulo"
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar Vaga"
-        android:textSize="48sp"
-        android:layout_marginHorizontal="10dp"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tituloInput"
-        android:layout_width="match_parent"
-        style="?attr/textInputOutlinedStyle"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_titulo_vaga"
-        android:layout_marginHorizontal="10dp"
-        app:layout_constraintTop_toBottomOf="@id/titulo">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tituloValue"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar Vaga"
+                android:textSize="48sp"
+                android:layout_marginHorizontal="10dp"
+                app:layout_constraintTop_toTopOf="parent"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tituloInput"
+                android:layout_width="match_parent"
+                style="?attr/textInputOutlinedStyle"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_titulo_vaga"
+                android:layout_marginHorizontal="10dp"
+                app:layout_constraintTop_toBottomOf="@id/titulo">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descricao"
-        android:layout_width="match_parent"
-        style="?attr/textInputOutlinedStyle"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_desricao"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tituloInput">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tituloValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/descricaoValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:maxLength="250"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/area"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?attr/textInputOutlinedStyle"
-        android:hint="@string/hint_area"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/descricao">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/areaValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/localidade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?attr/textInputOutlinedStyle"
-        android:hint="@string/hint_localidade"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/area">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/localidadeValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dataInicio"
-        android:layout_width="match_parent"
-        style="?attr/textInputOutlinedStyle"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_data_inicio"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/localidade">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descricao"
+                android:layout_width="match_parent"
+                style="?attr/textInputOutlinedStyle"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_desricao"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/tituloInput">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dataInicioValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descricaoValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLength="250"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirmar_senha"
-        android:layout_width="match_parent"
-        style="?attr/textInputOutlinedStyle"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_data_fim"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/dataInicio">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/textInputOutlinedStyle"
+                android:hint="@string/hint_area"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/descricao">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirmar_senhaValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/areaValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/telefone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?attr/textInputOutlinedStyle"
-        android:hint="@string/hint_telefone"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/confirmar_senha">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/localidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/textInputOutlinedStyle"
+                android:hint="@string/hint_localidade"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/area">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/telefoneValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/localidadeValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?attr/textInputOutlinedStyle"
-        android:hint="@string/hint_email"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/telefone">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dataInicio"
+                android:layout_width="match_parent"
+                style="?attr/textInputOutlinedStyle"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_data_inicio"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/localidade">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dataInicioValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/remuneracao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?attr/textInputOutlinedStyle"
-        android:hint="@string/hint_remuneracao"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/email">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmar_senha"
+                android:layout_width="match_parent"
+                style="?attr/textInputOutlinedStyle"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_data_fim"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/dataInicio">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/remuneracaoValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmar_senhaValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        style="@style/Widget.Material3.Button.ElevatedButton"
-        android:id="@+id/criarButtonId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/remuneracao"
-        android:layout_marginVertical="48dp"
-        android:text="@string/button_criar_vaga"
-        android:textSize="16sp"
-        android:backgroundTint="?attr/colorSecondary"
-        android:textColor="?attr/colorOnPrimary"
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/telefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/textInputOutlinedStyle"
+                android:hint="@string/hint_telefone"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/confirmar_senha">
 
-    <Button
-        style="@style/Widget.Material3.Button.TextButton"
-        android:id="@+id/cancelarButtonId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/criarButtonId"
-        android:text="@string/button_cancelar"
-        android:textSize="16sp"
-        android:textColor="?attr/colorSecondary"
-        />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/telefoneValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/textInputOutlinedStyle"
+                android:hint="@string/hint_email"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/telefone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/remuneracao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/textInputOutlinedStyle"
+                android:hint="@string/hint_remuneracao"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/remuneracaoValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/mostrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mostrar anunciante"
+                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="10dp"
+                app:layout_constraintTop_toBottomOf="@id/remuneracao"/>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintTop_toBottomOf="@id/mostrar"
+                app:singleSelection="true"
+                android:layout_marginHorizontal="10dp"
+                >
+                <Button
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:id="@+id/sim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sim"
+                    />
+                <Button
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:id="@+id/nao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Não"
+                    />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <Button
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:id="@+id/criarButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toggleButton"
+                android:layout_marginVertical="48dp"
+                android:text="@string/button_criar_vaga"
+                android:textSize="16sp"
+                android:backgroundTint="?attr/colorSecondary"
+                android:textColor="?attr/colorOnPrimary"
+                />
+
+            <Button
+                style="@style/Widget.Material3.Button.TextButton"
+                android:id="@+id/cancelarButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/criarButtonId"
+                android:text="@string/button_cancelar"
+                android:textSize="16sp"
+                android:textColor="?attr/colorSecondary"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

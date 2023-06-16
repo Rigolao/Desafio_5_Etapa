@@ -17,6 +17,11 @@ interface UsuariosService {
         @Body usuarioCadastroResponse: UsuarioCadastroResponse
     ): Call<Unit>
 
+    @POST("/email-send")
+    fun recuperarSenha(
+        @Body email: String
+    ): Call<Unit>
+
     @PUT("user/{id}")
     fun editar(
         @Path("id") id: Int,

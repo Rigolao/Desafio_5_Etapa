@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="?attr/backgroundColor">
+    android:background="?attr/backgroundColor"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/menu"
@@ -16,23 +16,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="16dp">
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meu Perfil"
-            android:textSize="32dp"/>
+            android:textSize="32dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nomeLayoutId"
-            android:enabled="false"
             style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_nome"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            android:enabled="false"
+            android:hint="@string/hint_nome">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nomeInputId"
@@ -42,12 +42,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLayoutId"
-            android:enabled="false"
             style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_email"
-            android:layout_marginTop="4dp" >
+            android:layout_marginTop="4dp"
+            android:enabled="false"
+            android:hint="@string/hint_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailInputId"
@@ -57,49 +57,65 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/senhaLayoutId"
-            android:enabled="false"
             style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:enabled="false"
             android:hint="@string/hint_senha"
-            app:endIconMode="password_toggle"
-            android:layout_marginTop="4dp">
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/senhaInputId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            style="@style/Widget.Material3.Button.ElevatedButton"
             android:id="@+id/editarButtonId"
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:text="@string/button_editar"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/senhaLayoutId"
-            android:layout_marginTop="48dp"
-            android:text="@string/button_editar"
-            android:textSize="16dp"
-            android:backgroundTint="?attr/colorSecondary"
-            android:textColor="?attr/colorOnPrimary"
-            />
+            app:layout_constraintTop_toBottomOf="@id/senhaLayoutId" />
 
         <Button
-            style="@style/Widget.Material3.Button.TextButton"
             android:id="@+id/cancelarButtonId"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/button_cancelar"
+            android:textColor="?attr/colorSecondary"
+            android:textSize="16dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/entrarButtonId"
-            android:text="@string/button_cancelar"
-            android:textSize="16dp"
-            android:textColor="?attr/colorSecondary"
-            android:visibility="invisible"
-            />
+            app:layout_constraintTop_toBottomOf="@id/entrarButtonId" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/deletarButtonId"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:text="@string/button_deletar"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16dp" />
     </LinearLayout>
 
 </LinearLayout>

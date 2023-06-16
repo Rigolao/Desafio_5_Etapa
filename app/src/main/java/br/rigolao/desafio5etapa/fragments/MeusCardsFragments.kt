@@ -74,7 +74,6 @@ class MeusCardsFragments : Fragment(){
 
     inner class EstagiosListCallBack: Callback<List<EstagioListResponse>> {
         override fun onResponse(call: Call<List<EstagioListResponse>>, response: Response<List<EstagioListResponse>>) {
-            Toast.makeText(requireContext(), "Deu Certo!", Toast.LENGTH_SHORT).show()
             if(response.isSuccessful) {
                 listaEstagiosResponse = response.body()!!
                 listaEstagiosResponse = listaEstagiosResponse.filter { it.dadosUsuario.id == 1 }
@@ -83,21 +82,20 @@ class MeusCardsFragments : Fragment(){
         }
 
         override fun onFailure(call: Call<List<EstagioListResponse>>, t: Throwable) {
-            Toast.makeText(requireContext(), "Deu Ruim!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Ocorreu um erro!", Toast.LENGTH_SHORT).show()
             Log.e("Retrofit erro", t.message ?: "Sem mensagem")
         }
     }
 
     inner class EstagioDeleteCallBack: Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-            Toast.makeText(requireContext(), "Deu Certo!", Toast.LENGTH_SHORT).show()
             if(response.isSuccessful) {
                 atualizarRecyclerView();
             }
         }
 
         override fun onFailure(call: Call<Unit>, t: Throwable) {
-            Toast.makeText(requireContext(), "Deu Ruim!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Ocorreu um erro", Toast.LENGTH_SHORT).show()
             Log.e("Retrofit erro", t.message ?: "Sem mensagem")
         }
     }

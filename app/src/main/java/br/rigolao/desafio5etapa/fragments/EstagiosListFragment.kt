@@ -57,10 +57,6 @@ class EstagiosListFragment : Fragment() {
         val toolbarAnunciante: MaterialToolbar = view.findViewById(R.id.menuAnunciante)
         val toolbarInteressado: MaterialToolbar = view.findViewById(R.id.menuInteressado)
 
-
-
-        println("Tipo de usuario: " + tipo)
-
         if(tipo == 0) {
             toolbarInteressado.visibility = View.VISIBLE
             toolbarAnunciante.visibility = View.GONE
@@ -68,6 +64,11 @@ class EstagiosListFragment : Fragment() {
                 when (item.itemId) {
                     R.id.perfil -> {
                         (activity as? OnFragmentInteractionListener)?.onFragmentInteractionWithoutBackStack(ProfileFragment())
+                        true
+                    }
+
+                    R.id.minhasVagas -> {
+                        Toast.makeText(requireContext(), "Essa função é somente para anunciantes", Toast.LENGTH_SHORT).show()
                         true
                     }
 
@@ -100,7 +101,6 @@ class EstagiosListFragment : Fragment() {
 
     inner class EstagiosListCallBack: Callback<List<EstagioListResponse>> {
         override fun onResponse(call: Call<List<EstagioListResponse>>, response: Response<List<EstagioListResponse>>) {
-            Toast.makeText(requireContext(), "Deu Certo!", Toast.LENGTH_SHORT).show()
             if(response.isSuccessful) {
                 listaEstagiosResponse = response.body()!!
                 atualizarRecyclerView();
@@ -108,21 +108,20 @@ class EstagiosListFragment : Fragment() {
         }
 
         override fun onFailure(call: Call<List<EstagioListResponse>>, t: Throwable) {
-            Toast.makeText(requireContext(), "Deu Ruim!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Algo deu errado!", Toast.LENGTH_SHORT).show()
             Log.e("Retrofit erro", t.message ?: "Sem mensagem")
         }
     }
 
     inner class EstagioDeleteCallBack: Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-            Toast.makeText(requireContext(), "Deu Certo!", Toast.LENGTH_SHORT).show()
             if(response.isSuccessful) {
                 atualizarRecyclerView();
             }
         }
 
         override fun onFailure(call: Call<Unit>, t: Throwable) {
-            Toast.makeText(requireContext(), "Deu Ruim!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Algo deu errado!", Toast.LENGTH_SHORT).show()
             Log.e("Retrofit erro", t.message ?: "Sem mensagem")
         }
     }

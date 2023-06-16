@@ -36,8 +36,6 @@ class CadastroActivity : AppCompatActivity() {
         val email: TextInputEditText = findViewById(R.id.emailValue)
         val senha: TextInputEditText = findViewById(R.id.senhaValue)
         val confirmarSenha: TextInputEditText = findViewById(R.id.confirmar_senhaValue)
-        val telefone: TextInputEditText = findViewById(R.id.telefoneValue)
-
 
         fun isEmailValid(email: String): Boolean {
             val emailPattern = "^[a-zA-Z0-9._%+-]+@sou\\.unaerp\\.edu\\.br$"
@@ -100,16 +98,6 @@ class CadastroActivity : AppCompatActivity() {
             Toast.makeText(this@CadastroActivity, "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
             Log.e("Retrofit erro", t.message ?: "Sem mensagem")
         }
-    }
-
-    private fun carregando() {
-        background.visibility = View.VISIBLE
-        loading.visibility = View.VISIBLE
-    }
-
-    private fun esconderCarregando() {
-        background.visibility = View.GONE
-        loading.visibility = View.GONE
     }
 
 }
