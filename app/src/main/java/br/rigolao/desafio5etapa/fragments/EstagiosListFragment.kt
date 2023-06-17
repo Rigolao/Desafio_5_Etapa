@@ -112,6 +112,10 @@ class EstagiosListFragment : Fragment() {
             if(response.isSuccessful) {
                 listaEstagiosResponse = response.body()!!
                 atualizarRecyclerView();
+            } else {
+                println(response)
+                Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
         }
 
@@ -126,6 +130,10 @@ class EstagiosListFragment : Fragment() {
             if(response.isSuccessful) {
                 getListaEstagios()
                 atualizarRecyclerView();
+            } else {
+                println(response)
+                Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
         }
 
@@ -193,8 +201,6 @@ class EstagiosListFragment : Fragment() {
         val id = sharedPreferences.getInt("ID", 0)
 
         if (listaEstagiosResponse != null) {
-
-            println(listaEstagiosResponse)
 
             rvEstagios?.adapter = EstagiosAdapter(
                 id, tipo, transformarListaEstagioResponse(listaEstagiosResponse), ::openEstagio, ::onDeleteEstagio

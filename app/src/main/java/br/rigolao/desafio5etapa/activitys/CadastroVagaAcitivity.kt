@@ -23,8 +23,6 @@ import retrofit2.Response
 
 class CadastroVagaAcitivity() : AppCompatActivity() {
 
-//    private var meusCardsFragment: MeusCardsFragments? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_adicionar)
@@ -47,12 +45,6 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
         val exibirButton: MaterialButtonToggleGroup = findViewById(R.id.toggleButton)
 
         val estagioService = ServiceCreator.createService<EstagiosService>()
-//
-//        meusCardsFragment = MeusCardsFragments()
-//
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.fragmentContainer, fragment)
-//            .commit()
 
         if (estagio != null) {
             criarButton.text = "Editar Vaga"
@@ -149,25 +141,17 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
         }
     }
 
-//    override fun onBackPressed() {
-//        println(meusCardsFragment)
-//        if(meusCardsFragment != null) {
-//            meusCardsFragment?.atualizarRecyclerView()
-//        }
-//
-//        super.onBackPressed()
-//    }
-
     inner class EstagioCreateCallBack : Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
             if (response.isSuccessful) {
                 Toast.makeText(this@CadastroVagaAcitivity, "Vaga criada!", Toast.LENGTH_SHORT)
                     .show()
-//                this@CadastroVagaAcitivity.onBackPressed()
                 onBackPressedDispatcher.onBackPressed()
+            } else {
+                println(response)
+                Toast.makeText(this@CadastroVagaAcitivity, "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
-
-            println(response)
         }
 
         override fun onFailure(call: Call<Unit>, t: Throwable) {
@@ -186,8 +170,11 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
             if (response.isSuccessful) {
                 Toast.makeText(this@CadastroVagaAcitivity, "Vaga editada!", Toast.LENGTH_SHORT)
                     .show()
-//                this@CadastroVagaAcitivity.onBackPressed()
                 onBackPressedDispatcher.onBackPressed()
+            } else {
+                println(response)
+                Toast.makeText(this@CadastroVagaAcitivity, "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
         }
 

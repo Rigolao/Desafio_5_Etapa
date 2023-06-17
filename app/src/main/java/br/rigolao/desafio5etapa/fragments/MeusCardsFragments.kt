@@ -88,6 +88,10 @@ class MeusCardsFragments : Fragment(){
                 listaEstagiosResponse = response.body()!!
                 listaEstagiosResponse = listaEstagiosResponse.filter { it.dadosUsuario.id == sharedPreferences.getInt("ID", 0) }
                 atualizarRecyclerView();
+            } else {
+                println(response)
+                Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
         }
 
@@ -102,6 +106,10 @@ class MeusCardsFragments : Fragment(){
             if(response.isSuccessful) {
                 getListaEstagios()
                 atualizarRecyclerView();
+            } else {
+                println(response)
+                Toast.makeText(requireContext(), "Algo deu errado, tente novamente!", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit erro", response.message() ?: "Sem mensagem")
             }
         }
 
