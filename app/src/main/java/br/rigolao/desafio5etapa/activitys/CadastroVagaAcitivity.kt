@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.rigolao.desafio5etapa.R
 import br.rigolao.desafio5etapa.data.Estagio
+import br.rigolao.desafio5etapa.fragments.MeusCardsFragments
 import br.rigolao.desafio5etapa.responses.EstagioCadastroResponse
 import br.rigolao.desafio5etapa.responses.EstagioEdicaoresponse
 import br.rigolao.desafio5etapa.responses.EstagioListResponse
@@ -21,6 +22,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CadastroVagaAcitivity() : AppCompatActivity() {
+
+//    private var meusCardsFragment: MeusCardsFragments? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,15 +46,13 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
         val remuneracaoValue: TextInputEditText = findViewById(R.id.remuneracaoValue)
         val exibirButton: MaterialButtonToggleGroup = findViewById(R.id.toggleButton)
 
-
-        val estagioService = ServiceCreator.createService<EstagiosService>();
-
-        val opcaoSelecionada =  exibirButton.checkedButtonId
-        val exibir = when (opcaoSelecionada) {
-            R.id.sim -> "S"
-            R.id.nao -> "N"
-            else -> null
-        }
+        val estagioService = ServiceCreator.createService<EstagiosService>()
+//
+//        meusCardsFragment = MeusCardsFragments()
+//
+//        supportFragmentManager.beginTransaction()
+//            .add(R.id.fragmentContainer, fragment)
+//            .commit()
 
         if (estagio != null) {
             criarButton.text = "Editar Vaga"
@@ -73,7 +74,12 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
 
         criarButton.setOnClickListener {
 
-            println("Clicando!!!")
+            val opcaoSelecionada = exibirButton.checkedButtonId
+            val exibir = when (opcaoSelecionada) {
+                R.id.sim -> true
+                R.id.nao -> false
+                else -> null
+            }
 
             if (estagio?.id != null) {
 
@@ -113,7 +119,6 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
                     areaValue.text.toString().isEmpty() ||
                     emailValue.text.toString().isEmpty() ||
                     descricaoValue.text.toString().isEmpty() ||
-                    exibir == null ||
                     remuneracaoValue.text.toString().isEmpty() ||
                     telefoneValue.text.toString().isEmpty() ||
                     dataInicioValue.text.toString().isEmpty() ||
@@ -131,7 +136,7 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
                     areaConhecimento = areaValue.text.toString(),
                     email = emailValue.text.toString(),
                     descricao = descricaoValue.text.toString(),
-                    exibir = exibir!!,
+                    exibir = if(exibir!!) "S" else "N",
                     remuneracao = remuneracaoValue.text.toString().toDouble(),
                     telefone = telefoneValue.text.toString(),
                     dataInicio = dataInicioValue.text.toString(),
@@ -144,12 +149,22 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
         }
     }
 
+//    override fun onBackPressed() {
+//        println(meusCardsFragment)
+//        if(meusCardsFragment != null) {
+//            meusCardsFragment?.atualizarRecyclerView()
+//        }
+//
+//        super.onBackPressed()
+//    }
+
     inner class EstagioCreateCallBack : Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
             if (response.isSuccessful) {
                 Toast.makeText(this@CadastroVagaAcitivity, "Vaga criada!", Toast.LENGTH_SHORT)
                     .show()
-                this@CadastroVagaAcitivity.onBackPressed()
+//                this@CadastroVagaAcitivity.onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
 
             println(response)
@@ -171,7 +186,8 @@ class CadastroVagaAcitivity() : AppCompatActivity() {
             if (response.isSuccessful) {
                 Toast.makeText(this@CadastroVagaAcitivity, "Vaga editada!", Toast.LENGTH_SHORT)
                     .show()
-                this@CadastroVagaAcitivity.onBackPressed()
+//                this@CadastroVagaAcitivity.onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
         }
 

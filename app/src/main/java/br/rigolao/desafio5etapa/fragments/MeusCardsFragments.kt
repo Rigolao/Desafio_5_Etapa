@@ -72,11 +72,21 @@ class MeusCardsFragments : Fragment(){
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        getListaEstagios()
+
+        atualizarRecyclerView()
+    }
+
     inner class EstagiosListCallBack: Callback<List<EstagioListResponse>> {
         override fun onResponse(call: Call<List<EstagioListResponse>>, response: Response<List<EstagioListResponse>>) {
             if(response.isSuccessful) {
+                val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+
                 listaEstagiosResponse = response.body()!!
-                listaEstagiosResponse = listaEstagiosResponse.filter { it.dadosUsuario.id == 1 }
+                listaEstagiosResponse = listaEstagiosResponse.filter { it.dadosUsuario.id == sharedPreferences.getInt("ID", 0) }
                 atualizarRecyclerView();
             }
         }
@@ -90,6 +100,7 @@ class MeusCardsFragments : Fragment(){
     inner class EstagioDeleteCallBack: Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
             if(response.isSuccessful) {
+                getListaEstagios()
                 atualizarRecyclerView();
             }
         }
@@ -135,7 +146,7 @@ class MeusCardsFragments : Fragment(){
         return listaEstagios
     }
 
-    private fun atualizarRecyclerView(rvEstagios: RecyclerView?) {
+    fun atualizarRecyclerView(rvEstagios: RecyclerView?) {
         rvEstagios?.layoutManager = LinearLayoutManager(context)
 
         val sharedPreferences = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
@@ -149,7 +160,7 @@ class MeusCardsFragments : Fragment(){
         }
     }
 
-    private fun atualizarRecyclerView() {
+    fun atualizarRecyclerView() {
         val rvEstagios: RecyclerView? = getView()?.findViewById(R.id.listEstagios)
         rvEstagios?.layoutManager = LinearLayoutManager(context)
 

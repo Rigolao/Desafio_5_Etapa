@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceCreator {
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.137.1:8080/")
+        .baseUrl("http://192.168.137.1:8080/") // Trocar por seu ipv4
         .addConverterFactory(GsonConverterFactory.create())
         .build();
 

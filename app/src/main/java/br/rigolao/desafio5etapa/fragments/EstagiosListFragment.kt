@@ -99,6 +99,14 @@ class EstagiosListFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        getListaEstagios()
+
+        atualizarRecyclerView()
+    }
+
     inner class EstagiosListCallBack: Callback<List<EstagioListResponse>> {
         override fun onResponse(call: Call<List<EstagioListResponse>>, response: Response<List<EstagioListResponse>>) {
             if(response.isSuccessful) {
@@ -116,6 +124,7 @@ class EstagiosListFragment : Fragment() {
     inner class EstagioDeleteCallBack: Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
             if(response.isSuccessful) {
+                getListaEstagios()
                 atualizarRecyclerView();
             }
         }
